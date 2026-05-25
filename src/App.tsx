@@ -179,7 +179,7 @@ export default function App() {
               Istruzioni per interagire con l'interfaccia
             </p>
             <p className="text-[14px] leading-snug font-normal">
-              Immagina di essere un operatore nel settore manufatturiero e di dover utilizzare quest'interfaccia di comando dei macchinari con un guanto. <span className="font-bold">Modifica la velocità del nastro mettendola <span className="underline">esattamente</span> al 72% e rimuovi "Temperatura Zona 2 Critica" dal registro allarmi.</span>
+              IImmagina di essere un operatore del settore manifatturiero e di dover utilizzare questa interfaccia di comando dei macchinari con un guanto. Modifica la velocità del nastro mettendola al 72% e rimuovi "Temperatura Zona 2 Critica" dal registro allarmi.
             </p>
           </div>
           
