@@ -54,12 +54,12 @@ const IndustrialSlider = ({
       {isCorrectDesign && (
         <button 
           onClick={() => onChange(Math.max(min, value - step))}
-          className="w-14 h-14 border border-black/20 bg-hmi-steel-light flex items-center justify-center text-2xl font-bold active:bg-black/10 active:translate-y-0.5 transition-all industrial-bevel"
+          className="w-12 h-12 border border-black/20 bg-hmi-steel-light flex items-center justify-center text-xl font-bold active:bg-black/10 active:translate-y-0.5 transition-all industrial-bevel"
         >
           -
         </button>
       )}
-      <div className={`relative ${isCorrectDesign ? "h-14" : "h-6"} flex-1 flex items-center`}>
+      <div className={`relative ${isCorrectDesign ? "h-12" : "h-6"} flex-1 flex items-center`}>
         <div className="absolute w-full h-[2px] industrial-inset" />
         <input
           type="range"
@@ -71,7 +71,7 @@ const IndustrialSlider = ({
           className="absolute w-full h-full opacity-0 cursor-pointer z-10"
         />
         <div 
-          className={`absolute ${isCorrectDesign ? "h-8 w-4" : "h-4 w-2"} bg-[#94A3B8] industrial-bevel border-[1px] border-black/20 pointer-events-none`}
+          className={`absolute ${isCorrectDesign ? "h-6 w-3" : "h-4 w-2"} bg-[#94A3B8] industrial-bevel border-[1px] border-black/20 pointer-events-none`}
           style={{ left: `calc(${((value - min) / (max - min)) * 100}% - ${isCorrectDesign ? '6px' : '4px'})` }}
         >
           <div className="w-full h-full flex flex-col justify-center items-center gap-[1px]">
@@ -83,7 +83,7 @@ const IndustrialSlider = ({
       {isCorrectDesign && (
         <button 
           onClick={() => onChange(Math.min(max, value + step))}
-          className="w-14 h-14 border border-black/20 bg-hmi-steel-light flex items-center justify-center text-2xl font-bold active:bg-black/10 active:translate-y-0.5 transition-all industrial-bevel"
+          className="w-12 h-12 border border-black/20 bg-hmi-steel-light flex items-center justify-center text-xl font-bold active:bg-black/10 active:translate-y-0.5 transition-all industrial-bevel"
         >
           +
         </button>
@@ -103,7 +103,7 @@ const IndustrialToggle = ({
   onChange: () => void;
   isCorrectDesign?: boolean;
 }) => (
-  <div className={`flex items-center justify-between ${isCorrectDesign ? "p-4 h-[64px]" : "p-2 h-[36px]"} rounded bg-black/5 industrial-bevel industrial-gloss transition-all`}>
+  <div className={`flex items-center justify-between ${isCorrectDesign ? "p-3 h-[56px]" : "p-2 h-[36px]"} rounded bg-black/5 industrial-bevel industrial-gloss transition-all`}>
     <span className={`${isCorrectDesign ? "text-[15px]" : "text-[10px]"} font-bold text-black/70 uppercase`}>{label}</span>
     <div className="flex items-center gap-3">
       {/* LED */}
@@ -111,11 +111,11 @@ const IndustrialToggle = ({
       {/* Switch */}
       <button
         onClick={onChange}
-        className={`relative ${isCorrectDesign ? "w-20 h-10 px-1" : "w-10 h-5 px-[2px]"} bg-[#E2E8F0] border border-black/10 flex items-center cursor-pointer transition-all`}
+        className={`relative ${isCorrectDesign ? "w-16 h-8 px-1" : "w-10 h-5 px-[2px]"} bg-[#E2E8F0] border border-black/10 flex items-center cursor-pointer transition-all`}
       >
         <motion.div
-          animate={{ x: active ? (isCorrectDesign ? 40 : 20) : 0 }}
-          className={`${isCorrectDesign ? "w-9 h-9" : "w-4 h-4"} industrial-bevel ${active ? 'bg-hmi-toxic-green-dim' : 'bg-[#94A3B8]'} transition-all`}
+          animate={{ x: active ? (isCorrectDesign ? 32 : 20) : 0 }}
+          className={`${isCorrectDesign ? "w-7 h-7" : "w-4 h-4"} industrial-bevel ${active ? 'bg-hmi-toxic-green-dim' : 'bg-[#94A3B8]'} transition-all`}
         />
       </button>
     </div>
@@ -246,52 +246,52 @@ export default function App() {
         </header>
 
         {/* Main Content Area */}
-        <main className={`flex-1 ${isCorrectDesign ? "p-6" : "p-3"} overflow-y-auto flex flex-col ${isCorrectDesign ? "gap-6" : "gap-3"} min-h-0`}>
-          <div className={`flex flex-col ${isCorrectDesign ? "gap-6" : "gap-3"}`}>
-          
+        <main className={`flex-1 ${isCorrectDesign ? "p-4 overflow-hidden" : "p-3 overflow-y-auto"} flex flex-col ${isCorrectDesign ? "gap-4" : "gap-3"} min-h-0`}>
+          <div className={`${isCorrectDesign ? "flex-1 min-h-0 flex flex-col gap-4" : "flex flex-col gap-3"}`}>
+
           {/* Top Row: Process Control and Alarms */}
-          <div className={`grid grid-cols-1 ${isCorrectDesign ? "gap-6" : "gap-3"}`}>
-            
+          <div className={`${isCorrectDesign ? "flex gap-4 flex-1 min-h-0" : "grid grid-cols-1 gap-3"}`}>
+
             {/* Process Control Section */}
-            <section className={`border border-hmi-steel-border/50 ${isCorrectDesign ? "p-6 pb-4 h-fit" : "p-2 md:p-3"} bg-hmi-steel/30 relative flex flex-col`}>
-              <div className={`flex items-center justify-between ${isCorrectDesign ? "mb-6" : "mb-2"} border-b border-black/5 ${isCorrectDesign ? "pb-3" : "pb-1"}`}>
+            <section className={`border border-hmi-steel-border/50 ${isCorrectDesign ? "p-4 pb-3 flex-1 min-h-0 overflow-y-auto" : "p-2 md:p-3"} bg-hmi-steel/30 relative flex flex-col`}>
+              <div className={`flex items-center justify-between ${isCorrectDesign ? "mb-3" : "mb-2"} border-b border-black/5 ${isCorrectDesign ? "pb-2" : "pb-1"}`}>
                 <h2 className={`${isCorrectDesign ? "text-lg" : "text-[10px] md:text-[11px]"} font-bold text-black/50 uppercase flex items-center gap-2`}>
                   <Activity size={isCorrectDesign ? 20 : 12} />
                   Controllo Processo
                 </h2>
               </div>
               
-              <div className={isCorrectDesign ? "space-y-6" : "space-y-2 md:space-y-3"}>
+              <div className={isCorrectDesign ? "space-y-4" : "space-y-2 md:space-y-3"}>
                 <IndustrialSlider label="Velocità Nastro (%)" value={speed} onChange={setSpeed} max={100} step={1} isCorrectDesign={isCorrectDesign} />
                 <IndustrialSlider label="Temperatura Zona 2 – Vulcanizzazione" value={temp} onChange={setTemp} min={0} max={300} unit="° C" isCorrectDesign={isCorrectDesign} />
                 <IndustrialSlider label="Pressione Iniezione (%)" value={injPressure} onChange={setInjPressure} max={100} step={1} isCorrectDesign={isCorrectDesign} />
               </div>
               
-              <div className={`${isCorrectDesign ? "mt-6" : "mt-2"} flex flex-col gap-1`}>
+              <div className={`${isCorrectDesign ? "mt-3" : "mt-2"} flex flex-col gap-1`}>
                 <div className="flex items-center gap-2">
                   <span className={`${isCorrectDesign ? "text-[14px]" : "text-[9px]"} font-bold text-black/60 uppercase`}>Offset Pressione Stampo</span>
                   <div className="flex-1 h-[1px] bg-black/5" />
                   <div className="flex items-center gap-2">
-                    <div className={`${isCorrectDesign ? "w-32 h-14 text-base" : "w-16 h-6 text-[11px]"} industrial-inset flex items-center justify-end px-3 font-bold text-slate-900 tabular-nums`}>
+                    <div className={`${isCorrectDesign ? "w-24 h-12 text-sm" : "w-16 h-6 text-[11px]"} industrial-inset flex items-center justify-end px-3 font-bold text-slate-900 tabular-nums`}>
                       {pressure.toFixed(1)} bar
                     </div>
                     <button 
                       onClick={() => setPressure(p => parseFloat((Math.max(0, p - 0.1)).toFixed(1)))}
-                      className={`${isCorrectDesign ? "w-14 h-14 text-2xl" : "w-6 h-6 text-sm"} industrial-bevel bg-hmi-steel-light flex items-center justify-center font-bold active:bg-black/10 transition-all`}
+                      className={`${isCorrectDesign ? "w-12 h-12 text-xl" : "w-6 h-6 text-sm"} industrial-bevel bg-hmi-steel-light flex items-center justify-center font-bold active:bg-black/10 transition-all`}
                     >
                       -
                     </button>
                     <button 
                       onClick={() => setPressure(p => parseFloat((p + 0.1).toFixed(1)))}
-                      className={`${isCorrectDesign ? "w-14 h-14 text-2xl" : "w-6 h-6 text-sm"} industrial-bevel bg-hmi-steel-light flex items-center justify-center font-bold active:bg-black/10 transition-all`}
+                      className={`${isCorrectDesign ? "w-12 h-12 text-xl" : "w-6 h-6 text-sm"} industrial-bevel bg-hmi-steel-light flex items-center justify-center font-bold active:bg-black/10 transition-all`}
                     >
                       +
                     </button>
                   </div>
                 </div>
 
-                <div className={`flex items-center justify-between ${isCorrectDesign ? "mt-4" : "mt-1"}`}>
-                  <div className={`flex ${isCorrectDesign ? "gap-8" : "gap-4"}`}>
+                <div className={`flex items-center justify-between ${isCorrectDesign ? "mt-2" : "mt-1"}`}>
+                  <div className={`flex ${isCorrectDesign ? "gap-4" : "gap-4"}`}>
                     <div className="flex flex-col">
                       <span className={`${isCorrectDesign ? "text-[12px]" : "text-[7px]"} text-black/40 uppercase font-bold`}>Portata Pompa</span>
                       <span className={`${isCorrectDesign ? "text-lg" : "text-[10px]"} text-hmi-toxic-green/80 font-mono`}>12.3 L/min</span>
@@ -304,7 +304,7 @@ export default function App() {
                 </div>
               </div>
 
-              <div className={`grid grid-cols-2 ${isCorrectDesign ? "gap-3 mt-6" : "gap-x-2 gap-y-1 mt-2"}`}>
+              <div className={`grid grid-cols-2 ${isCorrectDesign ? "gap-2 mt-3" : "gap-x-2 gap-y-1 mt-2"}`}>
                 <IndustrialToggle label="Pompa Olio Idraulico" active={cooling} onChange={() => setCooling(!cooling)} isCorrectDesign={isCorrectDesign} />
                 <IndustrialToggle label="Taratura Sensori" active={autoCalib} onChange={() => setAutoCalib(!autoCalib)} isCorrectDesign={isCorrectDesign} />
               </div>
@@ -312,12 +312,12 @@ export default function App() {
 
             {/* Alarm Log Section */}
             <section className="border border-hmi-steel-border/50 bg-hmi-steel/30 flex flex-col flex-1 min-h-0">
-              <div className={`flex items-center justify-between ${isCorrectDesign ? "px-6 py-4" : "px-3 py-1"} border-b border-black/5 bg-black/5`}>
+              <div className={`flex items-center justify-between ${isCorrectDesign ? "px-4 py-3" : "px-3 py-1"} border-b border-black/5 bg-black/5`}>
                 <h2 className={`${isCorrectDesign ? "text-lg" : "text-[10px]"} font-bold text-black/50 uppercase flex items-center gap-2`}>
                   <Bell size={isCorrectDesign ? 20 : 10} />
                   Registro Allarmi
                 </h2>
-                <div className={`flex items-center ${isCorrectDesign ? "gap-6" : "gap-4"}`}>
+                <div className={`flex items-center ${isCorrectDesign ? "gap-4" : "gap-4"}`}>
                   <div className={`flex ${isCorrectDesign ? "gap-2" : "gap-1"}`}>
                     {(['TUTTI', 'ERR', 'WRN'] as const).map((tag) => (
                       <button
@@ -346,9 +346,9 @@ export default function App() {
                           exit={{ x: 100, opacity: 0 }}
                           className="border-b border-black/5 last:border-0 hover:bg-black/5 bg-hmi-steel/10"
                         >
-                          <td className={`${isCorrectDesign ? "p-5 px-6 text-[15px]" : "p-0.5 px-2 text-[9px]"} font-bold text-hmi-amber opacity-80 tabular-nums align-top`}>{alarm.time}</td>
-                          <td className={`${isCorrectDesign ? "p-5 text-[15px]" : "p-0.5 text-[9px]"} font-bold uppercase ${alarm.type === 'ERR' ? 'text-red-500' : 'text-hmi-amber'} align-top`}>{alarm.code}</td>
-                          <td className={`${isCorrectDesign ? "p-5" : "p-0.5"} align-top`}>
+                          <td className={`${isCorrectDesign ? "p-3 px-4 text-[15px]" : "p-0.5 px-2 text-[9px]"} font-bold text-hmi-amber opacity-80 tabular-nums align-top`}>{alarm.time}</td>
+                          <td className={`${isCorrectDesign ? "p-3 text-[15px]" : "p-0.5 text-[9px]"} font-bold uppercase ${alarm.type === 'ERR' ? 'text-red-500' : 'text-hmi-amber'} align-top`}>{alarm.code}</td>
+                          <td className={`${isCorrectDesign ? "p-3" : "p-0.5"} align-top`}>
                             <div className="flex flex-col gap-2">
                               <span className={`${isCorrectDesign ? "text-[15px]" : "text-[9px]"} font-bold uppercase ${alarm.type === 'ERR' ? 'text-red-500' : 'text-hmi-amber'} truncate max-w-[200px]`}>
                                 {alarm.desc}
@@ -357,14 +357,14 @@ export default function App() {
                                 <div className="flex items-center gap-3">
                                   <button 
                                     onClick={() => setAlarmLog(prev => prev.filter(a => a.id !== alarm.id))}
-                                    className="px-6 py-3 border border-hmi-toxic-green/30 bg-hmi-toxic-green/5 text-hmi-toxic-green text-[13px] font-bold uppercase industrial-bevel hover:bg-hmi-toxic-green/10 transition-all flex items-center gap-2"
+                                    className="px-4 py-2 border border-hmi-toxic-green/30 bg-hmi-toxic-green/5 text-hmi-toxic-green text-[13px] font-bold uppercase industrial-bevel hover:bg-hmi-toxic-green/10 transition-all flex items-center gap-2"
                                   >
                                     <div className="w-[6px] h-[6px] border-b-2 border-r-2 border-current rotate-45 mb-[1px]" />
                                     Risolvi
                                   </button>
                                   <button 
                                     onClick={() => setAlarmLog(prev => prev.filter(a => a.id !== alarm.id))}
-                                    className="px-6 py-3 border border-red-500/30 bg-red-500/5 text-red-500 text-[13px] font-bold uppercase industrial-bevel hover:bg-red-500/10 transition-all flex items-center gap-2"
+                                    className="px-4 py-2 border border-red-500/30 bg-red-500/5 text-red-500 text-[13px] font-bold uppercase industrial-bevel hover:bg-red-500/10 transition-all flex items-center gap-2"
                                   >
                                     <div className="relative w-[7px] h-[7px] flex items-center justify-center">
                                       <div className="absolute w-full h-[1.5px] bg-red-500 rotate-45" />
@@ -404,9 +404,9 @@ export default function App() {
                 </table>
               </div>
 
-              <div className={`${isCorrectDesign ? "p-5" : "p-2"} border-t border-black/10 bg-black/5`}>
-                <div className={`flex items-center justify-between ${isCorrectDesign ? "text-[14px]" : "text-[8px]"} font-bold uppercase text-black/40`}>
-                  <div className={`flex ${isCorrectDesign ? "gap-6" : "gap-3"}`}>
+              <div className={`${isCorrectDesign ? "p-3" : "p-2"} border-t border-black/10 bg-black/5`}>
+                <div className={`flex items-center justify-between ${isCorrectDesign ? "text-[13px]" : "text-[8px]"} font-bold uppercase text-black/40`}>
+                  <div className={`flex ${isCorrectDesign ? "gap-4" : "gap-3"}`}>
                     <span>Attivi: <span className="text-hmi-toxic-green">2</span></span>
                     <span>Non Letti: <span className="text-hmi-amber">3</span></span>
                     <span>Risolti: <span className="text-black/60">14</span></span>
