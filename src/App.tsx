@@ -47,13 +47,13 @@ const IndustrialSlider = ({
     <div className={`flex justify-between items-end ${isCorrectDesign ? "mb-2" : "mb-1"}`}>
       <span className={`${isCorrectDesign ? "text-[15px]" : "text-[10px]"} font-bold text-black/60 uppercase tracking-wider`}>{label}</span>
       <span className={`${isCorrectDesign ? "text-2xl" : "text-sm"} font-bold text-hmi-toxic-green tracking-tighter`}>
-        {step < 1 ? value.toFixed(2) : value}{unit}
+        {value}{unit}
       </span>
     </div>
     <div className="flex items-center gap-3">
       {isCorrectDesign && (
         <button 
-          onClick={() => onChange(parseFloat(Math.max(min, value - step).toFixed(2)))}
+          onClick={() => onChange(Math.max(min, value - step))}
           className="w-14 h-14 border border-black/20 bg-hmi-steel-light flex items-center justify-center text-2xl font-bold active:bg-black/10 active:translate-y-0.5 transition-all industrial-bevel"
         >
           -
@@ -67,7 +67,7 @@ const IndustrialSlider = ({
           max={max}
           step={step}
           value={value}
-          onChange={(e) => onChange(parseFloat(e.target.value))}
+          onChange={(e) => onChange(parseInt(e.target.value))}
           className="absolute w-full h-full opacity-0 cursor-pointer z-10"
         />
         <div 
@@ -82,7 +82,7 @@ const IndustrialSlider = ({
       </div>
       {isCorrectDesign && (
         <button 
-          onClick={() => onChange(parseFloat(Math.min(max, value + step).toFixed(2)))}
+          onClick={() => onChange(Math.min(max, value + step))}
           className="w-14 h-14 border border-black/20 bg-hmi-steel-light flex items-center justify-center text-2xl font-bold active:bg-black/10 active:translate-y-0.5 transition-all industrial-bevel"
         >
           +
@@ -129,7 +129,7 @@ const IconButton = ({ active }: { active?: boolean }) => (
 );
 
 export default function App() {
-  const [speed, setSpeed] = useState(30.42);
+  const [speed, setSpeed] = useState(30);
   const [temp, setTemp] = useState(185);
   const [pressure, setPressure] = useState(0.9);
   const [injPressure, setInjPressure] = useState(74);
@@ -262,7 +262,7 @@ export default function App() {
               </div>
               
               <div className={isCorrectDesign ? "space-y-6" : "space-y-2 md:space-y-3"}>
-                <IndustrialSlider label="Velocità Nastro (%)" value={speed} onChange={setSpeed} max={100} step={0.01} isCorrectDesign={isCorrectDesign} />
+                <IndustrialSlider label="Velocità Nastro (%)" value={speed} onChange={setSpeed} max={100} step={1} isCorrectDesign={isCorrectDesign} />
                 <IndustrialSlider label="Temperatura Zona 2 – Vulcanizzazione" value={temp} onChange={setTemp} min={0} max={300} unit="° C" isCorrectDesign={isCorrectDesign} />
                 <IndustrialSlider label="Pressione Iniezione (%)" value={injPressure} onChange={setInjPressure} max={100} step={1} isCorrectDesign={isCorrectDesign} />
               </div>
