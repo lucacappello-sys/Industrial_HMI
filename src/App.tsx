@@ -253,7 +253,7 @@ export default function App() {
           <div className={`${isCorrectDesign ? "flex flex-col gap-4 flex-1 min-h-0" : "grid grid-cols-1 gap-3"}`}>
 
             {/* Process Control Section */}
-            <section className={`border border-hmi-steel-border/50 ${isCorrectDesign ? "p-4 pb-3 flex-1 min-h-0 overflow-y-auto" : "p-2 md:p-3"} bg-hmi-steel/30 relative flex flex-col`}>
+            <section className={`border border-hmi-steel-border/50 ${isCorrectDesign ? "p-4 pb-3 flex-1 min-h-0 overflow-hidden" : "p-2 md:p-3"} bg-hmi-steel/30 relative flex flex-col`}>
               <div className={`flex items-center justify-between ${isCorrectDesign ? "mb-3" : "mb-2"} border-b border-black/5 ${isCorrectDesign ? "pb-2" : "pb-1"}`}>
                 <h2 className={`${isCorrectDesign ? "text-lg" : "text-[10px] md:text-[11px]"} font-bold text-black/50 uppercase flex items-center gap-2`}>
                   <Activity size={isCorrectDesign ? 20 : 12} />
