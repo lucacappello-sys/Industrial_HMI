@@ -22,6 +22,21 @@ interface Alarm {
   type: 'ERR' | 'WRN';
 }
 
+// --- Constants ---
+
+const INITIAL_ALARMS: Alarm[] = [
+  { id: '2', time: '14:02:28', code: 'ERR_088', desc: 'TEMPERATURA ZONA 2 CRITICA', type: 'ERR' },
+  { id: '6', time: '13:58:22', code: 'ERR_102', desc: 'EMERGENZA PREMUTA - LINEA B', type: 'ERR' },
+  { id: '9', time: '13:50:30', code: 'ERR_201', desc: 'ERRORE COMUNICAZIONE PLC', type: 'ERR' },
+  { id: '1', time: '14:02:42', code: 'WRN_079', desc: 'PRESSIONE STAMPO FUORI SOGLIA', type: 'WRN' },
+  { id: '3', time: '14:02:13', code: 'WRN_089', desc: 'VELOCITÀ NASTRO ANOMALA', type: 'WRN' },
+  { id: '4', time: '14:01:43', code: 'WRN_086', desc: 'SENSORE POMPA NON RISPONDE', type: 'WRN' },
+  { id: '5', time: '14:01:02', code: 'WRN_031', desc: 'TARATURA AUTOMATICA FALLITA', type: 'WRN' },
+  { id: '7', time: '13:55:10', code: 'WRN_044', desc: 'LIVELLO LUBRIFICANTE BASSO', type: 'WRN' },
+  { id: '8', time: '13:52:05', code: 'WRN_012', desc: 'FLUSSO RAFFREDDAMENTO RIDOTTO', type: 'WRN' },
+  { id: '10', time: '13:48:15', code: 'WRN_055', desc: 'SOVRACCARICO MOTORE ESTRUSORE', type: 'WRN' },
+];
+
 // --- Components ---
 
 const IndustrialSlider = ({ 
@@ -144,23 +159,22 @@ export default function App() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowFab(true);
-    }, 60000); // 60 seconds
+    }, 60000);
     return () => clearTimeout(timer);
   }, []);
 
-  const initialAlarms: Alarm[] = [
-    { id: '2', time: '14:02:28', code: 'ERR_088', desc: 'TEMPERATURA ZONA 2 CRITICA', type: 'ERR' },
-    { id: '6', time: '13:58:22', code: 'ERR_102', desc: 'EMERGENZA PREMUTA - LINEA B', type: 'ERR' },
-    { id: '9', time: '13:50:30', code: 'ERR_201', desc: 'ERRORE COMUNICAZIONE PLC', type: 'ERR' },
-    { id: '1', time: '14:02:42', code: 'WRN_079', desc: 'PRESSIONE STAMPO FUORI SOGLIA', type: 'WRN' },
-    { id: '3', time: '14:02:13', code: 'WRN_089', desc: 'VELOCITÀ NASTRO ANOMALA', type: 'WRN' },
-    { id: '4', time: '14:01:43', code: 'WRN_086', desc: 'SENSORE POMPA NON RISPONDE', type: 'WRN' },
-    { id: '5', time: '14:01:02', code: 'WRN_031', desc: 'TARATURA AUTOMATICA FALLITA', type: 'WRN' },
-    { id: '7', time: '13:55:10', code: 'WRN_044', desc: 'LIVELLO LUBRIFICANTE BASSO', type: 'WRN' },
-    { id: '8', time: '13:52:05', code: 'WRN_012', desc: 'FLUSSO RAFFREDDAMENTO RIDOTTO', type: 'WRN' },
-    { id: '10', time: '13:48:15', code: 'WRN_055', desc: 'SOVRACCARICO MOTORE ESTRUSORE', type: 'WRN' },
-  ];
-  const [alarmLog, setAlarmLog] = useState<Alarm[]>(initialAlarms);
+  useEffect(() => {
+    setSpeed(30);
+    setTemp(185);
+    setPressure(0.9);
+    setInjPressure(74);
+    setCooling(true);
+    setAutoCalib(false);
+    setAlarmFilter('TUTTI');
+    setAlarmLog(INITIAL_ALARMS);
+  }, [isCorrectDesign]);
+
+  const [alarmLog, setAlarmLog] = useState<Alarm[]>(INITIAL_ALARMS);
 
   const filteredAlarms = alarmLog.filter(a => {
     if (alarmFilter === 'TUTTI') return true;
@@ -253,7 +267,7 @@ export default function App() {
           <div className={`${isCorrectDesign ? "flex flex-col gap-4 flex-1 min-h-0" : "grid grid-cols-1 gap-3"}`}>
 
             {/* Process Control Section */}
-            <section className={`border border-hmi-steel-border/50 ${isCorrectDesign ? "p-4 pb-3 flex-1 min-h-0 overflow-hidden" : "p-2 md:p-3"} bg-hmi-steel/30 relative flex flex-col`}>
+            <section className={`border border-hmi-steel-border/50 ${isCorrectDesign ? "p-4 pb-3 h-[calc(50%+20px)] shrink-0 overflow-hidden" : "p-2 md:p-3"} bg-hmi-steel/30 relative flex flex-col`}>
               <div className={`flex items-center justify-between ${isCorrectDesign ? "mb-3" : "mb-2"} border-b border-black/5 ${isCorrectDesign ? "pb-2" : "pb-1"}`}>
                 <h2 className={`${isCorrectDesign ? "text-lg" : "text-[10px] md:text-[11px]"} font-bold text-black/50 uppercase flex items-center gap-2`}>
                   <Activity size={isCorrectDesign ? 20 : 12} />
