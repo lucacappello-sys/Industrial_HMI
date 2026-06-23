@@ -246,11 +246,11 @@ export default function App() {
         </header>
 
         {/* Main Content Area */}
-        <main className={`flex-1 ${isCorrectDesign ? "p-6 overflow-y-auto" : "p-3 overflow-hidden"} flex flex-col ${isCorrectDesign ? "gap-6" : "gap-3"} min-h-0`}>
-          <div className={`flex flex-col ${isCorrectDesign ? "gap-6" : "gap-3"} ${isCorrectDesign ? "" : "h-full overflow-hidden"}`}>
+        <main className={`flex-1 ${isCorrectDesign ? "p-6" : "p-3"} overflow-y-auto flex flex-col ${isCorrectDesign ? "gap-6" : "gap-3"} min-h-0`}>
+          <div className={`flex flex-col ${isCorrectDesign ? "gap-6" : "gap-3"}`}>
           
           {/* Top Row: Process Control and Alarms */}
-          <div className={`grid grid-cols-1 ${isCorrectDesign ? "gap-6" : "gap-3"} flex-1 min-h-0 overflow-y-auto custom-scrollbar`}>
+          <div className={`grid grid-cols-1 ${isCorrectDesign ? "gap-6" : "gap-3"}`}>
             
             {/* Process Control Section */}
             <section className={`border border-hmi-steel-border/50 ${isCorrectDesign ? "p-6 pb-4 h-fit" : "p-2 md:p-3"} bg-hmi-steel/30 relative flex flex-col`}>
