@@ -250,7 +250,7 @@ export default function App() {
           <div className={`${isCorrectDesign ? "flex-1 min-h-0 flex flex-col gap-4" : "flex flex-col gap-3"}`}>
 
           {/* Top Row: Process Control and Alarms */}
-          <div className={`${isCorrectDesign ? "flex gap-4 flex-1 min-h-0" : "grid grid-cols-1 gap-3"}`}>
+          <div className={`${isCorrectDesign ? "flex flex-col gap-4 flex-1 min-h-0" : "grid grid-cols-1 gap-3"}`}>
 
             {/* Process Control Section */}
             <section className={`border border-hmi-steel-border/50 ${isCorrectDesign ? "p-4 pb-3 flex-1 min-h-0 overflow-y-auto" : "p-2 md:p-3"} bg-hmi-steel/30 relative flex flex-col`}>
